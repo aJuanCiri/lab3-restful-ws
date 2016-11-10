@@ -53,12 +53,10 @@ public class AddressBookServiceTest {
 		Response response2 = client.target("http://localhost:8282/contacts")
 				.request().get();
 		assertEquals(response.getStatus(), response2.getStatus());
-		assertEquals(0, response2.readEntity(AddressBook.class).getPersonList()
-				.size());
 
 		// Verify that GET /contacts is safe
-		AddressBook ab2 = response2.readEntity(AddressBook.class);
-		assertEquals(0, ab2.getPersonList().size());
+		assertEquals(0, response2.readEntity(AddressBook.class).getPersonList()
+				.size());
 	}
 
 	@Test
@@ -115,9 +113,8 @@ public class AddressBookServiceTest {
 
 
 		// Verify that POST /contacts is not safe
-		AddressBook ab2 = response2.readEntity(AddressBook.class);
-		assertNotEquals(response.readEntity(AddressBook.class).getPersonList().size(), 
-			ab2.getPersonList().size());	
+		Response newResponse = client.target("http://localhost:8282/contacts").request().get();
+		assertEquals(2, newResponse.readEntity(AddressBook.class).getPersonList().size());	
 	}
 
 	@Test
