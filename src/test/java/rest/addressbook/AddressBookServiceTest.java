@@ -58,7 +58,7 @@ public class AddressBookServiceTest {
 
 		// Verify that GET /contacts is safe
 		AddressBook ab2 = response2.readEntity(AddressBook.class);
-		assertEquals(ab.getPersonList().size(), ab2.getPersonList().size());
+		assertEquals(0, ab2.getPersonList().size());
 	}
 
 	@Test
