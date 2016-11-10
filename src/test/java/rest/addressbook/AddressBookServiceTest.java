@@ -105,7 +105,7 @@ public class AddressBookServiceTest {
 		Response response2 = client.target("http://localhost:8282/contacts")
 				.request(MediaType.APPLICATION_JSON)
 				.post(Entity.entity(juan, MediaType.APPLICATION_JSON));
-		assertEquals(201, response2.getStatus);
+		assertEquals(201, response2.getStatus());
 		assertNotEquals(juanURI, response2.getLocation());
 		assertEquals(MediaType.APPLICATION_JSON_TYPE, response.getMediaType());
 		Person newJuan = response2.readEntity(Person.class);
